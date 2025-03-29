@@ -1,30 +1,30 @@
 BASE_URL = "https://stellarburgers.nomoreparties.site"
-INGREDIENTS_URL = f"{BASE_URL}/api/ingredients"
-REGISTER_URL = f"{BASE_URL}/api/auth/register"
-LOGIN_URL = f"{BASE_URL}/api/auth/login"
-LOGOUT_URL = f"{BASE_URL}/api/auth/logout"
-REFRESH_TOKEN_URL = f"{BASE_URL}/api/auth/token"
-USER_URL =  f"{BASE_URL}/api/auth/user"
-ORDER_URL = f"{BASE_URL}/api/orders"
+ingredients_url = f"{BASE_URL}/api/ingredients"
+register_url = f"{BASE_URL}/api/auth/register"
+login_url = f"{BASE_URL}/api/auth/login"
+logout_url = f"{BASE_URL}/api/auth/logout"
+refresh_token_url = f"{BASE_URL}/api/auth/token"
+user_url = f"{BASE_URL}/api/auth/user"
+order_url = f"{BASE_URL}/api/orders"
 
-VALID_USER = {
+valid_user = {
     "email": "test-user@example.com",
     "password": "testpassword",
     "name": "Test User"
 }
 
-EXISTING_USER = {
+existing_user = {
     "email": "existing-user@example.com",
     "password": "existingpassword",
     "name": "Existing User"
 }
 
-INVALID_USER = {
+invalid_user = {
     "email": "invalid-user@example.com",
     "password": "invalidpassword"
 }
 
-UPDATED_USER = {
+updated_user = {
     "email": "updated_user_@example.com",
     "password": "newpassword123",
     "name": "UpdatedUser"

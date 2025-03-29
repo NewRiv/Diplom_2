@@ -6,6 +6,7 @@ from utils.assert_helpers import assert_response
 @allure.feature("Order Creation")
 class TestOrder:
     @allure.story("Создание заказа с авторизацией + с ингредиентами. Позитивный тест.")
+    @allure.title("Успешное создание заказа авторизованным пользователем")
     def test_create_order_with_auth(self, register_user, ingredients):
         order_api = OrderAPI()
         valid_ingredient_id = ingredients[0]['_id']
@@ -13,6 +14,7 @@ class TestOrder:
         assert_response(response, 200)
 
     @allure.story("Создание заказа без авторизации")
+    @allure.title("Ошибка при создании заказа без авторизации")
     def test_create_order_without_auth(self, ingredients):
         order_api = OrderAPI()
         valid_ingredient_id = ingredients[0]['_id']
@@ -24,12 +26,14 @@ class TestOrder:
 
 
     @allure.story("Создание заказа без ингредиентов")
+    @allure.title("Ошибка при создании заказа без ингредиентов")
     def test_create_order_without_ingredients(self, register_user, ingredients):
         order_api = OrderAPI()
         response = order_api.create_order(register_user['accessToken'], ingredients=[])
         assert_response(response, 400, "Ingredient ids must be provided")
 
     @allure.story("Создание заказа с неверным хешем ингредиентов")
+    @allure.title("Ошибка при создании заказа с некорректным id ингредиента")
     def test_create_order_invalid_ingredients(self, register_user):
         order_api = OrderAPI()
         invalid_ingredient_id = ""  # Используем неверный хеш ингредиента
@@ -40,12 +44,14 @@ class TestOrder:
         assert_response(response, 500, "Internal Server Error")
 
     @allure.story("Получение заказов авторизованным пользователем")
+    @allure.title("Успешное получение списка заказов авторизованным пользователем")
     def test_get_orders_with_auth(self, register_user):
         order_api = OrderAPI()
         response = order_api.get_user_orders(register_user['accessToken'])
         assert_response(response, 200)
 
     @allure.story("Получение заказов неавторизованным пользователем")
+    @allure.title("Ошибка при получении заказов без авторизации")
     def test_get_orders_without_auth(self):
         order_api = OrderAPI()
         response = order_api.get_user_orders(None)

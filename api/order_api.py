@@ -1,11 +1,11 @@
 import requests
-from test_data import ORDER_URL, INGREDIENTS_URL
+from test_data import order_url, ingredients_url
 
 
 class OrderAPI:
     def __init__(self):
-        self.base_url = ORDER_URL
-        self.ingredients_url = INGREDIENTS_URL
+        self.base_url = order_url
+        self.ingredients_url = ingredients_url
 
     def get_ingredients(self):
         response = requests.get(self.ingredients_url)
